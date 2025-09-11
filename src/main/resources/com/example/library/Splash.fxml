@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<AnchorPane prefHeight="450.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.Splash">
+   <children>
+      <ImageView fitHeight="468.0" fitWidth="651.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@splash/intro.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="recMain" arcHeight="5.0" arcWidth="5.0" fill="#ffdcff" height="23.0" layoutX="126.0" layoutY="389.0" stroke="BLACK" strokeType="INSIDE" width="402.0" />
+      <Rectangle fx:id="recTemp" arcHeight="5.0" arcWidth="5.0" fill="#d168d1" height="23.0" layoutX="126.0" layoutY="389.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,39 @@
+
+
+.nav-form{
+    -fx-background-color: linear-gradient(to bottom right, #6a11cb, #2575fc);
+}
+.nav-btn{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 15;
+    -fx-font-family: "Arial";
+    -fx-alignment: CENTER-LEFT;
+}
+.logout{
+    -fx-background-color: #7c32d7;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+.logout:hover{
+    -fx-background-color: #8c35ff;
+}
+.shadow{
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 6, 0, 0, 0);
+}
+
+.white-bg{
+    -fx-background-color: #fff;
+    -fx-background-radius: 8;
+}
+.card {
+    -fx-background-color: linear-gradient(to bottom right, #8e44ad, #3498db);
+    -fx-background-radius: 4;
+}
+.button:hover {
+    -fx-background-color: #417ddc;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane prefHeight="684.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.user.UserManagerSystem">
+    <children>
+        <AnchorPane prefHeight="708.0" prefWidth="900.0">
+            <children>
+                <BorderPane prefHeight="708.0" prefWidth="981.0" AnchorPane.topAnchor="0.0">
+                    <left>
+
+                        <AnchorPane style="-fx-background-color: linear-gradient(to bottom, #6a11cb, #2575fc);" BorderPane.alignment="CENTER">
+                            <children>
+                                <VBox layoutX="21.0" layoutY="91.2" prefHeight="370.0" prefWidth="240.0" spacing="15.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="91.0">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Username :">
+                                        <font>
+                                            <Font name="Tahoma" size="13.0" />
+                                        </font>
+                                    </Text>
+                                    <TextField fx:id="username" onAction="#searchUser" style="-fx-background-color: #f9f9f9; -fx-border-color: linear-gradient(to bottom, #6a11cb, #2575fc); -fx-border-radius: 8; -fx-background-radius: 8;" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Password :">
+                                        <font>
+                                            <Font name="Tahoma" size="13.0" />
+                                        </font>
+                                    </Text>
+                                    <TextField fx:id="password" onAction="#searchUser" style="-fx-background-color: #f9f9f9; -fx-border-color: linear-gradient(to bottom, #6a11cb, #2575fc); -fx-border-radius: 8; -fx-background-radius: 8;" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Name :">
+                                        <font>
+                                            <Font name="Tahoma" size="13.0" />
+                                        </font>
+                                    </Text>
+                                    <TextField fx:id="tName" onAction="#searchUser" style="-fx-background-color: #f9f9f9; -fx-border-color: linear-gradient(to bottom, #6a11cb, #2575fc); -fx-border-radius: 8; -fx-background-radius: 8;" />
+
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Phone Number :">
+                                        <font>
+                                            <Font name="Tahoma" size="13.0" />
+                                        </font>
+                                    </Text>
+                                    <TextField fx:id="tPhoneNumber" style="-fx-background-color: #f9f9f9; -fx-border-color: linear-gradient(to bottom, #6a11cb, #2575fc); -fx-border-radius: 8; -fx-background-radius: 8;" />
+
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Class Name :">
+                                        <font>
+                                            <Font name="Tahoma" size="13.0" />
+                                        </font>
+                                    </Text>
+                                    <TextField fx:id="tClass" style="-fx-background-color: #f9f9f9; -fx-border-color: linear-gradient(to bottom, #6a11cb, #2575fc); -fx-border-radius: 8; -fx-background-radius: 8;" />
+                                </VBox>
+                                <ImageView fx:id="userView" fitHeight="47.0" fitWidth="42.0" layoutX="11.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/user.png" />
+                                    </image>
+                                    <effect>
+                                        <ColorAdjust brightness="1.0" />
+                                    </effect>
+                                </ImageView>
+                                <Label layoutX="64.0" layoutY="27.0" prefHeight="20.0" prefWidth="146.0" style="-fx-text-fill: white;" text="USER MANAGEMENT">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Line endX="138.10000610351562" endY="-7.62939453125E-6" layoutX="116.0" layoutY="82.0" startX="-100.30001831054688" startY="-7.62939453125E-6" stroke="WHITE" />
+                                <Button fx:id="btnSearch" alignment="BOTTOM_LEFT" layoutX="20.0" layoutY="468.0" mnemonicParsing="false" onAction="#searchUser" prefHeight="0.0" prefWidth="100.0" stylesheets="@css/userManager.css" text="Search" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+                                    <graphic>
+                                        <ImageView fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/search.png" />
+                                            </image>
+                                            <effect>
+                                                <ColorAdjust brightness="1.0" />
+                                            </effect>
+                                        </ImageView>
+                                    </graphic>
+                                    <font>
+                                        <Font size="10.0" />
+                                    </font>
+                           <styleClass>
+                              <String fx:value="nav-btn" />
+                              <String fx:value="shadow" />
+                           </styleClass></Button>
+                                <Button fx:id="btnAdd" alignment="BOTTOM_LEFT" layoutX="20.0" layoutY="500.0" mnemonicParsing="false" onAction="#addU" prefHeight="0.0" prefWidth="100.0" stylesheets="@css/userManager.css" text="Add" AnchorPane.leftAnchor="10.0">
+                                    <graphic>
+                                        <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/add.png" />
+                                            </image>
+                                            <effect>
+                                                <ColorAdjust brightness="1.0" />
+                                            </effect>
+                                        </ImageView>
+                                    </graphic>
+                           <styleClass>
+                              <String fx:value="nav-btn" />
+                              <String fx:value="shadow" />
+                           </styleClass></Button>
+                                <Button fx:id="btnUpdate" alignment="BOTTOM_LEFT" layoutX="18.0" layoutY="535.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="0.0" prefWidth="100.0" stylesheets="@css/userManager.css" text="Update" AnchorPane.leftAnchor="10.0">
+                                    <graphic>
+                                        <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/update.png" />
+                                            </image>
+                                            <effect>
+                                                <ColorAdjust brightness="1.0" />
+                                            </effect>
+                                        </ImageView>
+                                    </graphic>
+                           <styleClass>
+                              <String fx:value="nav-btn" />
+                              <String fx:value="shadow" />
+                           </styleClass></Button>
+                                <Button fx:id="btnDelete" alignment="BOTTOM_LEFT" layoutX="20.0" layoutY="568.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="0.0" prefWidth="100.0" stylesheets="@css/userManager.css" text="Delete" AnchorPane.leftAnchor="10.0">
+                                    <graphic>
+                                        <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/delete.png" />
+                                            </image>
+                                            <effect>
+                                                <ColorAdjust brightness="1.0" />
+                                            </effect>
+                                        </ImageView>
+                                    </graphic>
+                           <styleClass>
+                              <String fx:value="nav-btn" />
+                              <String fx:value="shadow" />
+                           </styleClass></Button>
+                                <Button fx:id="btnClear" alignment="BOTTOM_LEFT" layoutX="20.0" layoutY="602.0" mnemonicParsing="false" onAction="#clearUser" prefHeight="0.0" prefWidth="100.0" stylesheets="@css/userManager.css" text="Clear" AnchorPane.leftAnchor="10.0">
+                                    <graphic>
+                                        <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/clear.png" />
+                                            </image>
+                                            <effect>
+                                                <ColorAdjust brightness="1.0" />
+                                            </effect>
+                                        </ImageView>
+                                    </graphic>
+                           <styleClass>
+                              <String fx:value="nav-btn" />
+                              <String fx:value="shadow" />
+                           </styleClass></Button>
+                                <Button layoutX="32.0" layoutY="661.0" mnemonicParsing="false" onAction="#openLoginClient" prefHeight="34.0" prefWidth="42.0" stylesheets="@css/userManager.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/logout.png" />
+                                            </image>
+                                            <effect>
+                                                <ColorAdjust brightness="1.0" />
+                                            </effect>
+                                        </ImageView>
+                                    </graphic>
+                           <styleClass>
+                              <String fx:value="logout" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                                </Button>
+                                <Label layoutX="59.0" layoutY="676.0" text="Sign Out" textFill="WHITE" AnchorPane.bottomAnchor="18.399999999999977">
+                                    <font>
+                                        <Font name="Tahoma Bold" size="15.0" />
+                                    </font>
+                                </Label>
+                        <Button layoutX="116.6" layoutY="468.0" mnemonicParsing="false" onAction="#openManager" prefHeight="35.0" prefWidth="150.0" stylesheets="@css/userManager.css" text="Manage Book" AnchorPane.leftAnchor="116.6">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/book.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="nav-btn" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="onMusic" layoutX="125.0" layoutY="568.0" mnemonicParsing="false" onAction="#handleToggleBackgroundMusic" prefHeight="28.0" prefWidth="130.0" styleClass="nav-btn" stylesheets="@css/userManager.css" visible="false">
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/sound.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="offMusic" layoutX="125.0" layoutY="568.0" mnemonicParsing="false" onAction="#handleToggleBackgroundMusic" prefHeight="34.0" prefWidth="130.0" stylesheets="@css/userManager.css">
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/nosound.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="nav-btn" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </Button>
+                        <Line endX="-1.4000396728515625" endY="177.4000244140625" layoutX="121.0" layoutY="469.0" startX="-1.4000396728515625" startY="-3.0517578125E-5" stroke="WHITE" />
+                        <Button fx:id="handleRequest" layoutX="115.0" layoutY="516.0" mnemonicParsing="false" onAction="#openHandleRequest" prefHeight="35.0" prefWidth="158.0" stylesheets="@css/userManager.css" text="Handle Request">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/booksBorrow.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="nav-btn" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
+                            </children>
+                        </AnchorPane>
+                    </left>
+                    <center>
+                        <AnchorPane prefHeight="708.0" prefWidth="830.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <AnchorPane layoutX="14.0" layoutY="11.2" prefHeight="686.0" prefWidth="678.0" stylesheets="@css/userManager.css" AnchorPane.topAnchor="11.0">
+                                    <styleClass>
+                                        <String fx:value="shadow" />
+                                        <String fx:value="white-bg" />
+                                    </styleClass>
+                                    <children>
+                                        <AnchorPane prefHeight="154.0" prefWidth="679.0" stylesheets="@css/userManager.css">
+                                            <styleClass>
+                                                <String fx:value="shadow" />
+                                                <String fx:value="white-bg" />
+                                            </styleClass>
+                                            <children>
+                                                <AnchorPane layoutX="23.0" layoutY="21.0" prefHeight="114.0" prefWidth="180.0" styleClass="card" stylesheets="@css/userManager.css">
+                                                    <children>
+                                                        <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@image/people.png" />
+                                                            </image>
+                                             <effect>
+                                                <ColorAdjust brightness="1.0" />
+                                             </effect>
+                                                        </ImageView>
+                                                        <Label layoutX="73.0" layoutY="79.0" text="Total Account">
+                                                            <font>
+                                                                <Font name="Tahoma Bold" size="13.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="totalNumsAccount" layoutX="141.0" layoutY="28.0" prefHeight="22.0" prefWidth="11.0" text="0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                                                            <font>
+                                                                <Font name="Tahoma Bold" size="17.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="250.0" layoutY="20.0" prefHeight="114.0" prefWidth="180.0" styleClass="card" stylesheets="@css/userManager.css">
+                                                    <children>
+                                                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@image/userM.png" />
+                                                            </image>
+                                             <effect>
+                                                <ColorAdjust brightness="1.0" />
+                                             </effect>
+                                                        </ImageView>
+                                                        <Label layoutX="90.0" layoutY="78.0" text="Total Admin">
+                                                            <font>
+                                                                <Font name="Tahoma Bold" size="13.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="totalAdmin" layoutX="131.0" layoutY="46.0" prefHeight="22.0" prefWidth="0.0" text="0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                                                            <font>
+                                                                <Font name="Tahoma Bold" size="17.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="473.0" layoutY="21.0" prefHeight="114.0" prefWidth="180.0" styleClass="card" stylesheets="@css/userManager.css">
+                                                    <children>
+                                                        <ImageView fitHeight="59.0" fitWidth="55.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@image/userGroup.png" />
+                                                            </image>
+                                             <effect>
+                                                <ColorAdjust brightness="1.0" />
+                                             </effect>
+                                                        </ImageView>
+                                                        <Label layoutX="82.0" layoutY="76.0" prefHeight="16.0" prefWidth="78.0" text="Total Client">
+                                                            <font>
+                                                                <Font name="Tahoma Bold" size="13.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="totalClient" layoutX="125.0" layoutY="46.0" text="0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                                                            <font>
+                                                                <Font name="Tahoma Bold" size="17.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane layoutX="14.0" layoutY="393.0" stylesheets="@css/userManager.css">
+                                            <styleClass>
+                                                <String fx:value="shadow" />
+                                                <String fx:value="white-bg" />
+                                            </styleClass>
+                                        </AnchorPane>
+                              <ScrollPane layoutX="34.0" layoutY="420.0" prefHeight="282.0" prefWidth="610.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="10.0">
+                                 <content>
+                                                <TableView fx:id="table" onMouseClicked="#getData" prefHeight="279.0" prefWidth="606.0" stylesheets="@css/userManager.css">
+                                                    <columns>
+                                                        <TableColumn fx:id="colUsername" prefWidth="122.40002292394638" text="Username" />
+                                                        <TableColumn fx:id="colPassword" prefWidth="129.59996795654297" text="Password" />
+                                                        <TableColumn fx:id="colName" prefWidth="171.99993896484375" text="Name" />
+                                                        <TableColumn fx:id="colPhoneNumber" prefWidth="119.20004272460938" text="Phone Number" />
+                                                        <TableColumn fx:id="colClass" prefWidth="60.0" text="Class" />
+                                                    </columns>
+                                                </TableView>
+                                 </content>
+                              </ScrollPane>
+                              <ScrollPane layoutX="34.0" layoutY="169.0" prefHeight="217.0" prefWidth="380.0" vbarPolicy="NEVER">
+                                 <content>
+                                    <TableView fx:id="table1" onMouseClicked="#getData" prefHeight="218.0" prefWidth="378.0" stylesheets="@css/userManager.css">
+                                       <columns>
+                                          <TableColumn fx:id="colName1" prefWidth="171.99993896484375" text="Name" />
+                                          <TableColumn fx:id="colPhoneNumber1" prefWidth="113.60006713867188" text="Phone Number" />
+                                          <TableColumn fx:id="colClass1" prefWidth="91.20001831054685" text="Class" />
+                                       </columns>
+                                    </TableView>
+                                 </content>
+                              </ScrollPane>
+                              <AnchorPane layoutX="437.0" layoutY="175.0" prefHeight="212.0" prefWidth="202.0">
+                                 <children>
+                                    <BarChart fx:id="totalAccount" layoutX="-164.0" layoutY="-127.0" prefHeight="273.6" prefWidth="218.0" title="Total Account" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
+                                 </children>
+                              </AnchorPane>
+                              <Label layoutX="200.0" layoutY="249.0" opacity="0.51" style="-fx-text-fill: black;" text="Admin">
+                                 <font>
+                                    <Font name="Tahoma Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="314.0" layoutY="502.0" opacity="0.51" style="-fx-text-fill: black;" text="Client">
+                                 <font>
+                                    <Font name="Tahoma Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </center>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

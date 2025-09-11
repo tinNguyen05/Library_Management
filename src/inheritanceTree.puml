@@ -1,0 +1,432 @@
+@startuml
+top to bottom direction
+class AccountDB {
+    - static int id
+    - static String ISBN
+    - static final String USER = "root"
+    - static final String PASSWORD = "21012005"
+    - static final String URL = "jdbc:mysql://localhost/book"
+    - static final String DRIVER = "com.mysql.cj.jdbc.Driver"
+    - static AccountDB instance
+    - Connection
+    + static int getId()
+    + static void setId(int id)
+    + static String getIsbn()
+    + static void setIsbn(String isbn)
+    + static AccountDB getInstance()
+    + Connection getConnection()
+}
+class MainApplication {
+    - Stage primaryStage
+    - Stage splashStage
+    - static MediaPlayer backgroundMusicPlayer
+    - static boolean isMusicPlaying
+
+    + void start(Stage primaryStage) throws Exception
+    + void showSplash() throws IOException
+    + void finishSplash()
+    + void initializeBackgroundMusic()
+    + static void toggleBackgroundMusic()
+    + static boolean isBackgroundMusicPlaying()
+    + void showLoginClient() throws Exception
+    + void showLoginAdmin() throws Exception
+    + void showDetailBook(Book) throws Exception
+    + void showMainMenu() throws Exception
+    + void showSearchView() throws Exception
+    + void showManageView() throws Exception
+    + void showUser() throws Exception
+    + void showSignUp() throws Exception
+    + void showBookBorrow() throws Exception
+    + void showBookReturn() throws Exception
+    + void showChangePass() throws Exception
+    + void showForgotPass() throws Exception
+    + void showHandleRequest() throws Exception
+    + Stage getPrimaryStage()
+    + static void main(String[] args)
+}
+class BookManager {
+    - con: Connection
+    + addBook(book: Book): void
+    + getAllBooksTitle(): List<String>
+    + getHighestRatedBook(): Book
+    + searchBooks(keyword: String): List<Book>
+    + searchBookIsbn(tmpIsbn: String): Book
+    + updateBook(book: Book): void
+    + deleteBook(isbn: String): String
+    + PostCommentForBook(cmt: String, ISBN: String): void
+    + getQrcodeBlob(isbn: String): Blob
+}
+
+class LibraryManageController {
+    - MainApplication mainApp
+    - TextField isbnField
+    - TextField titleField
+    - TextField authorField
+    - TextField yearField
+    - TextField publisherField
+    - Label statusLabel
+    - BookManager
+
+    + addBook(): void
+    + updateBook(): void
+    + deleteBook(): void
+    + setMainApplication(mainApp: MainApplication): void
+    + returnToMainMenu(): void
+}
+
+class Book {
+    - isbn: String
+    - title: String
+    - author: String
+    - yearOfPublication: int
+    - publisher: String
+    - imageUrlS: String
+    - imageUrlM: String
+    - imageUrlL: String
+    + getIsbn(): String
+    + getTitle(): String
+    + getAuthor(): String
+    + getYearOfPublication(): int
+    + getPublisher(): String
+    + getImageUrlS(): String
+    + getImageUrlM(): String
+    + getImageUrlL(): String
+}
+
+class BorrowBookController {
+    - TextField tNums
+    - DatePicker tReturnD
+    - Book mainBook
+    + borrowBook(): void
+    - clear(): void
+}
+
+class CoreDatabase {
+    - con: Connection
+    + getConnection(): Connection
+}
+
+class DetailsBookController {
+    - Label isbnLabel
+    - Label titleLabel
+    - Label authorLabel
+    - Label yearLabel
+    - Label publisherLabel
+    - ImageView bookImage
+    - GridPane
+    - Label labelIsbn
+    - Label labelTitle
+    - Label labelAuthor
+    - Label labelYear
+    - Label labelPublisher
+    - ScrollPane scrollPaneComment
+    - TextField textFieldComment
+    - Button buttonPostComment
+    - ListView<String> commentListView
+    - Rating
+    - ImageView qrCodeImageView
+    - Book mainBook
+    - MainApplication mainApp
+    - BookManager
+
+    + DetailsBookController()
+    + setBookDetails(book: Book): void
+    + initialize(): void
+    + borrowBook(): void
+    + returnToMenu(): void
+    + addComment(): void
+    + loadComment(): void
+    + handleMouseClicked(mouseEvent: MouseEvent): void
+    + loadImage(imageUrl: String, imageView: ImageView): void
+    + loadQRCodeFromBlob(qrCodeBlob: Blob, qrCodeImageView: ImageView): void
+    + updateBookRatingInDatabase(ratingValue: double): void
+    + setMainApp(mainApp: MainApplication): void
+}
+class Comment {
+    - int id
+    - String book_id
+    - int user_id
+    - String content
+    - String date
+
+    + Comment(id: int, book_id: String, user_id: int, content: String, date: String)
+    + getId(): int
+    + getBook_id(): String
+    + getUserId(): int
+    + getContent(): String
+    + getDate(): String
+    + getCommentList(ISBN: String): List<Comment>
+}
+
+class LibrarySearchController {
+    - MainApplication mainApp
+    - TextField searchField
+    - ImageView imageView1
+    - ImageView imageView2
+    - ImageView imageView3
+    - ImageView imageView4
+    - ImageView imageView5
+    - ImageView imageView6
+    - ImageView imageView7
+    - ImageView imageView8
+    - ImageView imageViewTop
+    - Label bookName
+    - ListView<String> suggestionListView
+    - Button btnBack
+    - Button btnNext
+    - int currPage
+    - List<Book> currBookList
+    - BookManager
+
+    + loadImage(imageUrl: String, imageView: ImageView): void
+    + updateSuggestions(query: String): void
+    + initialize(): void
+    + clickSearchButton(e: ActionEvent): void
+    + loadBooksForPage(page: int): void
+    + loadNextBooks(): void
+    + loadPreviousBooks(): void
+    + getImageViewForIndex(index: int): ImageView
+    + searchBook(keyWord: String): void
+    + logError(message: String, throwable: Throwable): void
+    + clearBookDisplays(): void
+    + setupBookDisplay(book: Book, imageView: ImageView): void
+    + setMainApplication(mainApp: MainApplication): void
+    + returnToMainMenu(): void
+}
+class QRCodeGenerator {
+    +generateQRCodeBytes(content: String): byte[]
+}
+QRCodeGenerator : -qrCodeWriter: QRCodeWriter
+QRCodeGenerator : -bitMatrix: BitMatrix
+QRCodeGenerator : -pngOutputStream: ByteArrayOutputStream
+
+QRCodeGenerator : +generateQRCodeBytes(content: String) : byte[]
+
+class ReturnBookController {
+    - btnReturn: Button
+    - colIdBook: TableColumn<??, ?>
+    - colNums: TableColumn<??, ?>
+    - tableView: TableView<Book>
+    - returnView: AnchorPane
+    + initialize(): void
+    - loadData(): void
+    + returnBook(): void
+    + close(): void
+}
+ReturnBookController : - st: PreparedStatement
+ReturnBookController : - rs: ResultSet
+ReturnBookController : - con: Connection
+
+class ChangePass {
+    - changePassView: AnchorPane
+    - currentP: TextField
+    - newPass: TextField
+    - newPasss2: TextField
+    + close(): void
+    + changePass(event: ActionEvent): void
+    - checkCurrentPassword(currentPassword: String): boolean
+    - updatePassword(newPassword: String): boolean
+    - showAlert(type: Alert.AlertType, title: String, message: String): void
+}
+ChangePass : - con: Connection
+ChangePass : - st: PreparedStatement
+ChangePass : - rs: ResultSet
+class ForgotP {
+    - btnReturnLogin: Button
+    - btnSignUp: Button
+    - password: PasswordField
+    - signUpForm: AnchorPane
+    - signupView: ImageView
+    - tPhone: TextField
+    - username: TextField
+    - mainApp: MainApplication
+    + openLoginClient(): void
+    + setMainApp(mainApplication: MainApplication): void
+    + forgot(): void
+    - generateRandomPassword(): String
+}
+ForgotP : - con: Connection
+ForgotP : - st: PreparedStatement
+ForgotP : - rs: ResultSet
+class HandleRequest {
+    - tableView: TableView<Request>
+    - idColumn: TableColumn<Request, Integer>
+    - bookIdColumn: TableColumn<Request, String>
+    - userIdColumn: TableColumn<Request, Integer>
+    - requestDateColumn: TableColumn<Request, String>
+    - statusColumn: TableColumn<Request, String>
+    - approveButton: Button
+    - rejectButton: Button
+    - statusMessage: Text
+    - btnBack: Button
+    - requestList: ObservableList<Request>
+
+    + initialize(): void
+    - loadRequestData(): void
+    + handleApproveRequest(): void
+    + handleRejectRequest(): void
+    - showError(title: String, message: String): void
+    + openMainMenu(): void
+    + setMainApp(mainApplication: MainApplication): void
+}
+class LoginAdminForm {
+    - adminView: ImageView
+    - mainApp: MainApplication
+    - btnLoginADmin: Button
+    - btnReturnClient: Button
+    - loginadmin_form: AnchorPane
+    - password: PasswordField
+    - username: TextField
+
+    + initialize(url: URL, rb: ResourceBundle): void
+    + loginAdmin(): void
+    + openLoginClient(): void
+    + setMainApp(mainApplication: MainApplication): void
+}
+class LoginClientForm {
+    - btnLogin: Button
+    - btnSignup: Button
+    - main_form: AnchorPane
+    - password: PasswordField
+    - username: TextField
+    - clientView: ImageView
+    - welcome: ImageView
+    - mainApp: MainApplication
+    - userManagerSystem: UserManagerSystem
+
+    + initialize(url: URL, rb: ResourceBundle): void
+    + loginClient(): void
+    + openSignupForm(): void
+    + openForgotPassForm(): void
+    + openLoginAdmin(): void
+    + setMainApp(mainApplication: MainApplication): void
+}
+class Request {
+    - id: int
+    - bookId: String
+    - userId: int
+    - requestDate: String
+    - status: String
+
+    + Request(id: int, bookId: String, userId: int, requestDate: String, status: String)
+    + getId(): int
+    + setId(id: int): void
+    + getBookId(): String
+    + setBookId(bookId: String): void
+    + getUserId(): int
+    + setUserId(userId: int): void
+    + getRequestDate(): String
+    + setRequestDate(requestDate: String): void
+    + getStatus(): String
+    + setStatus(status: String): void
+}
+class SignupForm {
+    - mainApp: MainApplication
+    - username: TextField
+    - password: PasswordField
+    - tName: TextField
+    - tPhone: TextField
+    - tClass: TextField
+    - signUpForm: AnchorPane
+    - signupView: ImageView
+    - btnReturnLogin: Button
+    - btnSignUp: Button
+
+    + signup(): void
+    + openLoginClient(): void
+    + setMainApp(mainApplication: MainApplication): void
+}
+class User {
+    - username: String
+    - password: String
+    - name: String
+    - role: String
+    - phone: String
+    - classname: String
+    - id: int
+
+    + User(username: String, password: String, name: String, phone: String, classname: String)
+    + User(username: String, password: String, name: String, role: String, phone: String, classname: String)
+    + setId(id: int): void
+    + getId(): int
+    + getUsername(): String
+    + getPassword(): String
+    + getName(): String
+    + getRole(): String
+    + getPhone(): String
+    + getClassname(): String
+}
+class UserManagerSystem {
+    + void initialize(URL url, ResourceBundle rb)
+    + ObservableList<User> UserListData()
+    + ObservableList<User> UserListDataAdmin()
+    + void UserShowListData()
+    + void UserShowListDataAdmin()
+    + void addU(ActionEvent event)
+    + void updateUser(ActionEvent event)
+    + void deleteUser(ActionEvent event)
+    + void clearUser()
+    + void searchUser(ActionEvent event)
+    + void openLoginClient()
+    + int searchUserName(String username)
+    + void displayTotalNumsAccount()
+}
+
+class LoadingTask {
+    + Integer call() throws Exception
+    - updateProgress(i: double, total: double) : void
+}
+
+class MainMenuController {
+    - MainApplication mainApp
+    + void setMainApp(MainApplication mainApp)
+    + void openSearch() throws Exception
+    + void openLogin() throws Exception
+    + void displayTotalBook()
+    + void displayTotalBookBorrowed()
+    + void displayBookBorrowedChart()
+    + void displayUserName()
+    + void initialize(URL location, ResourceBundle resources)
+    + void handleToggleBackgroundMusic()
+    + void showReturnBookView() throws Exception
+    + void showChangePassView() throws Exception
+}
+class Splash {
+    - Rectangle recMain
+    - Rectangle recTemp
+    - MainApplication mainApp
+
+    + void setMainApp(MainApplication)
+    + void initialize()
+}
+
+MainApplication --> LoginClientForm
+MainApplication --> LoginAdminForm
+MainApplication --> DetailsBookController
+MainApplication --> MainMenuController
+MainApplication --> LibrarySearchController
+MainApplication --> LibraryManageController
+MainApplication --> UserManagerSystem
+MainApplication --> SignupForm
+MainApplication --> ForgotP
+MainApplication --> HandleRequest
+MainMenuController -|> AccountDB : extends
+LoadingTask -|> Task : extends
+UserManagerSystem -|> CoreDatabase : extends
+LoginClientForm -|> AccountDB : extends
+HandleRequest -|> AccountDB : extends
+ForgotP -|> AccountDB : extends
+ChangePass -|> AccountDB : extends
+ReturnBookController --> AccountDB : extends
+ReturnBookController --> "1" Book : Has-A
+LibrarySearchController --> MainApplication : "Has"
+LibraryManageController --> MainApplication : "Has"
+Comment -|> CoreDatabase : extends
+DetailsBookController -|> CoreDatabase : extends
+DetailsBookController --> MainApplication : "Has"
+BorrowBookController -|> CoreDatabase : extends
+BookManager -|> CoreDatabase : extends
+BookManager --> Book
+
+@enduml
+

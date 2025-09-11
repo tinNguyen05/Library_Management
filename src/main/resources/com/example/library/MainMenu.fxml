@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="840.0" stylesheets="@css/dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.MainMenuController">
+   <children>
+      <AnchorPane prefHeight="538.0" prefWidth="840.0">
+         <children>
+            <BorderPane prefHeight="519.0" prefWidth="840.0" styleClass="top-form" stylesheets="@css/dashboard.css">
+               <left>
+                  <AnchorPane prefHeight="519.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@css/dashboard.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="68.0" fitWidth="70.0" layoutX="66.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/user.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" contrast="-0.16" hue="0.04" saturation="-0.01" />
+                           </effect>
+                        </ImageView>
+                        <Label layoutX="63.0" layoutY="120.0" prefHeight="28.0" prefWidth="71.0" text="Welcome!" textFill="#e7e7e7">
+                           <font>
+                              <Font name="Tahoma Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Line endX="78.20001220703125" endY="-1.52587890625E-5" layoutX="101.0" layoutY="192.0" startX="-81.79998779296875" startY="-1.52587890625E-5" stroke="WHITE" />
+                        <Button layoutX="14.0" layoutY="470.0" mnemonicParsing="false" onAction="#openLogin" prefHeight="34.0" prefWidth="42.0" styleClass="logout" stylesheets="@css/dashboard.css" AnchorPane.bottomAnchor="10.0">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/logout.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="63.0" layoutY="481.0" text="Sign Out" textFill="WHITE" AnchorPane.bottomAnchor="16.600000000000023">
+                           <font>
+                              <Font name="Tahoma" size="17.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="10.4" layoutY="203.0" mnemonicParsing="false" onAction="#openSearch" prefHeight="35.0" prefWidth="180.0" stylesheets="@css/dashboard.css" text="Search Book" AnchorPane.leftAnchor="10.0">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/search.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="nav-btn" />
+                              <String fx:value="button" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="offMusic" layoutX="20.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleToggleBackgroundMusic" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@css/userManager.css" AnchorPane.leftAnchor="10.0">
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/nosound.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="onMusic" layoutX="20.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleToggleBackgroundMusic" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@css/userManager.css" visible="false" AnchorPane.leftAnchor="10.0">
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/sound.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnReturn" layoutX="10.0" layoutY="243.0" mnemonicParsing="false" onAction="#showReturnBookView" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@css/dashboard.css" text="Return Book" AnchorPane.leftAnchor="10.0">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/bookReturn.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label fx:id="nameUser" alignment="CENTER" layoutX="48.0" layoutY="142.0" prefHeight="34.0" prefWidth="94.0" text="Welcome!" textFill="#330766">
+                           <font>
+                              <Font name="Tahoma Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnReturn1" layoutX="10.4" layoutY="283.0" mnemonicParsing="false" onAction="#showChangePassView" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@css/dashboard.css" text="Change Password" AnchorPane.leftAnchor="10.4">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/changeP1.png" />
+                                 </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="530.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="11.2" layoutY="10.4" prefHeight="483.0" prefWidth="619.0" stylesheets="@css/dashboard.css" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="10.0">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <AnchorPane prefHeight="158.0" prefWidth="618.0" stylesheets="@css/dashboard.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane layoutX="27.0" layoutY="16.0" prefHeight="126.0" prefWidth="252.0" styleClass="card" stylesheets="@css/dashboard.css">
+                                       <children>
+                                          <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@image/books.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label layoutX="87.0" layoutY="93.0" text="Total Books">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="totalBook" layoutX="227.0" layoutY="14.0" text="0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="320.0" layoutY="16.0" prefHeight="126.0" prefWidth="257.0" styleClass="card" stylesheets="@css/dashboard.css">
+                                       <children>
+                                          <ImageView fitHeight="65.0" fitWidth="67.0" layoutX="15.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@image/booksBorrow.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label layoutX="76.0" layoutY="92.0" prefHeight="19.0" prefWidth="188.0" text="Total Borrowed Books">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="totalBorrowBook" layoutX="197.0" layoutY="18.0" text="0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="14.0" layoutY="179.0" prefHeight="272.0" prefWidth="586.0" stylesheets="@css/dashboard.css">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                                 <children>
+                                    <BarChart fx:id="bookBorrowChart" layoutX="34.0" layoutY="-6.0" prefHeight="290.0" prefWidth="586.0" title="Book Borrowed" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
